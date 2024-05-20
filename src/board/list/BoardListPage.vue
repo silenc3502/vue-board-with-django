@@ -4,7 +4,7 @@
     <router-link :to="{ name: 'BoardRegisterPage' }">
       게시물 작성
     </router-link>
-    <board-list :boards="boards"/>
+    <board-list-form :boards="boards"/>
   </v-container>
 </template>
 
@@ -12,7 +12,7 @@
 import { computed, onMounted } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
-import BoardList from "@/board/list/BoardList.vue";
+import BoardListForm from "@/board/list/BoardListForm.vue";
 
 const store = useStore()
 const router = useRouter()

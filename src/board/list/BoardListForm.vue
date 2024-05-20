@@ -21,7 +21,7 @@
           {{ board.boardId }}
         </td>
         <td align="left">
-          <router-link :to="{ name: 'JpaBoardReadPage', params: { boardId: board.boardId.toString() } }">
+          <router-link :to="{ name: 'BoardReadPage', params: { boardId: board.boardId.toString() } }">
             {{ board.title }}
           </router-link>
         </td>
@@ -50,7 +50,6 @@ const props = defineProps({
 </script>
 
 <style scoped>
-/* 스타일을 여기에 추가할 수 있습니다. */
 </style>
 
 

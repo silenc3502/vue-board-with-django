@@ -22,7 +22,7 @@ export type BoardActions = {
 const actions: BoardActions = {
     async requestBoardToSpring(context: ActionContext<BoardState, any>, boardId: number): Promise<void> {
         try {
-            const res: AxiosResponse<Board> = await axiosInst.djangoAxiosInst.get(`/jpa-board/${boardId}`)
+            const res: AxiosResponse<Board> = await axiosInst.djangoAxiosInst.get(`/board/${boardId}`)
             context.commit(REQUEST_BOARD_TO_SPRING, res.data)
         } catch (error) {
             alert('requestBoardToSpring() 문제 발생!')
@@ -31,7 +31,7 @@ const actions: BoardActions = {
     },
     async requestBoardListToSpring(context: ActionContext<BoardState, any>): Promise<void> {
         try {
-            const res: AxiosResponse<any, any> = await axiosInst.djangoAxiosInst.get('/jpa-board/list')
+            const res: AxiosResponse<any, any> = await axiosInst.djangoAxiosInst.get('/board/list')
             const data: Board[] = res.data
             context.commit(REQUEST_BOARD_LIST_TO_SPRING, data)
         } catch (error) {
@@ -46,7 +46,7 @@ const actions: BoardActions = {
         const { title, content, writer } = payload
 
         try {
-            const res: AxiosResponse = await axiosInst.djangoAxiosInst.post('/jpa-board/register', { title, content, writer })
+            const res: AxiosResponse = await axiosInst.djangoAxiosInst.post('/board/register', { title, content, writer })
             return res.data
         } catch (error) {
             alert('requestCreateBoardToSpring() 문제 발생')
@@ -55,7 +55,7 @@ const actions: BoardActions = {
     },
     async requestDeleteBoardToSpring(context: ActionContext<BoardState, any>, boardId: number): Promise<void> {
         try {
-            await axiosInst.djangoAxiosInst.delete(`/jpa-board/${boardId}`)
+            await axiosInst.djangoAxiosInst.delete(`/board/${boardId}`)
             alert('삭제 성공!')
         } catch (error) {
             alert('requestDeleteBoardToSpring() 문제 발생')
@@ -69,7 +69,7 @@ const actions: BoardActions = {
         const { title, content, writer, boardId } = payload
 
         try {
-            await axiosInst.djangoAxiosInst.put(`/jpa-board/${boardId}`, { title, content, writer })
+            await axiosInst.djangoAxiosInst.put(`/board/${boardId}`, { title, content, writer })
             alert('수정 성공!')
         } catch (error) {
             alert('requestModifyBoardToSpring() 문제 발생')
