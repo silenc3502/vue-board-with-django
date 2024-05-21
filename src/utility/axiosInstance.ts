@@ -1,4 +1,5 @@
 import axios, { AxiosInstance } from 'axios'
+import env from "@/env";
 
 // const springAxiosInst: AxiosInstance = axios.create({
 //     baseURL: 'http://localhost:7777',
@@ -11,7 +12,7 @@ import axios, { AxiosInstance } from 'axios'
 // })
 
 const djangoAxiosInst: AxiosInstance = axios.create({
-    baseURL: 'http://localhost:8000',
+    baseURL: env.api.MAIN_API_URL,
     timeout: 2500,
 })
 

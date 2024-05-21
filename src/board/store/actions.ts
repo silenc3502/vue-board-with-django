@@ -46,7 +46,7 @@ const actions: BoardActions = {
         const { title, content, writer } = payload
 
         try {
-            const res: AxiosResponse = await axiosInst.djangoAxiosInst.post('/board/register', { title, content, writer })
+            const res: AxiosResponse = await axiosInst.djangoAxiosInst.post('/board/register/', { title, content, writer })
             return res.data
         } catch (error) {
             alert('requestCreateBoardToSpring() 문제 발생')
