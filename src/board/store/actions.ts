@@ -44,9 +44,11 @@ const actions: BoardActions = {
     }): Promise<AxiosResponse> {
 
         const { title, content, writer } = payload
+        console.log('전송할 데이터:', { title, content, writer })
 
         try {
             const res: AxiosResponse = await axiosInst.djangoAxiosInst.post('/board/register/', { title, content, writer })
+            console.log('응답 데이터:', res.data)
             return res.data
         } catch (error) {
             alert('requestCreateBoardToSpring() 문제 발생')

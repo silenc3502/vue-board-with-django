@@ -18,7 +18,7 @@
       </tr>
       <tr v-else v-for="board in boards" :key="board.boardId">
         <td align="center">
-          {{ board.boardId }}
+          {{ board.id }}
         </td>
         <td align="left">
           <router-link :to="{ name: 'BoardReadPage', params: { boardId: board.boardId.toString() } }">
