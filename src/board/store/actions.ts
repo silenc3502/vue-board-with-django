@@ -22,7 +22,7 @@ export type BoardActions = {
 const actions: BoardActions = {
     async requestBoardToSpring(context: ActionContext<BoardState, any>, boardId: number): Promise<void> {
         try {
-            const res: AxiosResponse<Board> = await axiosInst.djangoAxiosInst.get(`/board/${boardId}`)
+            const res: AxiosResponse<Board> = await axiosInst.djangoAxiosInst.get(`/board/read/${boardId}`)
             context.commit(REQUEST_BOARD_TO_SPRING, res.data)
         } catch (error) {
             alert('requestBoardToSpring() 문제 발생!')
@@ -57,7 +57,7 @@ const actions: BoardActions = {
     },
     async requestDeleteBoardToSpring(context: ActionContext<BoardState, any>, boardId: number): Promise<void> {
         try {
-            await axiosInst.djangoAxiosInst.delete(`/board/${boardId}`)
+            await axiosInst.djangoAxiosInst.delete(`/board/delete/${boardId}`)
             alert('삭제 성공!')
         } catch (error) {
             alert('requestDeleteBoardToSpring() 문제 발생')
@@ -71,7 +71,7 @@ const actions: BoardActions = {
         const { title, content, writer, boardId } = payload
 
         try {
-            await axiosInst.djangoAxiosInst.put(`/board/${boardId}`, { title, content, writer })
+            await axiosInst.djangoAxiosInst.put(`/board/modify/${boardId}/`, { title, content, writer })
             alert('수정 성공!')
         } catch (error) {
             alert('requestModifyBoardToSpring() 문제 발생')

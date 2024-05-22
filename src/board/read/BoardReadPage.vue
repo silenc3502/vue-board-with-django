@@ -42,7 +42,7 @@ export default {
         ]),
         async onDelete () {
             await this.requestDeleteBoardToSpring(this.boardId)
-            await this.$router.push({ name: 'JpaBoardListPage' })
+            await this.$router.push({ name: 'BoardListPage' })
         }
     },
     created () {
